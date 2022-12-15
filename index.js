@@ -1,6 +1,34 @@
 //-----------------------------Test new version----------------------------------------
 
-const commands = [{ command: "help", response: "" }];
+const Commands = [
+  {
+    command: "help",
+    response: [
+      "<pre>ABOUT             Affiche des informations me concernant </pre>",
+      "<pre>EXPERIENCES       Affiche mes experiences professionnelles</pre>",
+      "<pre>HELP              Affiche les commandes spécifiques</pre>",
+      "<pre>PROJECT           Affiche la liste de mes projets</pre>",
+    ],
+  },
+  {
+    command: "about",
+    response: [
+      "<pre> NAME           RAYAN</pre>",
+      "<pre> STACK          FULLSTACK</pre>",
+      "<pre> FAVORITE STACK BACKEND</pre>",
+      "<pre> FRAMEWORKS     REACT,NODE,EXPRESS,NEST</pre>",
+      "<pre> LANGAGE        JavaScript,TypeScript, Python(en cours)</pre>",
+    ],
+  },
+];
+
+let commandsList = [];
+
+let commands = Commands.forEach((command) => {
+  commandsList.push(command.command);
+});
+
+console.log(commandsList);
 
 //var
 
@@ -27,7 +55,7 @@ let newInput = () => {
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("id", `${id}`);
-  input.setAttribute("onchange", `recupValue(this.id)`);
+  input.setAttribute("onchange", `valueProcessing(this.id)`);
   //   input.setAttribute("active", "true");
   //   input.focus();
 
@@ -40,39 +68,63 @@ let newInput = () => {
 newInput();
 //---------------------------------------------------------------------
 
-//-----------------------------RecupValue function----------------------------------------
+//-----------------------------SearchResult function----------------------------------------
 
-// let input = document.querySelector("input");
-
-let recupValue = (idInput) => {
-  let input = document.getElementById(`${idInput}`);
-  let inputValue = input.value.toLowerCase();
-  console.log(inputValue);
+let SearchResult = (userCommand) => {
+  let commandObj = Commands.find((el) => el.command === userCommand);
   let p = document.createElement("p");
   p.classList.add("res_console");
-  input.setAttribute("disabled", "true");
-  if (inputValue === "help") {
-    p.innerText = `
-    ABOUT       Affiche des informations me concernant          
-    `;
-    terminalContent.appendChild(p);
-  } else {
-    p.innerText = `'${input.value}' n’est pas reconnu en tant que commande interne
-    ou externe, un programme exécutable ou un fichier de commandes.`;
 
+  if (commandObj !== undefined) {
+    let div = document.createElement("div");
+    div.innerHTML = commandObj.response.join("");
+    terminalContent.appendChild(div);
+  } else {
+    p.innerText = `'${userCommand}' n’est pas reconnu en tant que commande interne
+    ou externe, un programme exécutable ou un fichier de commandes.`;
     terminalContent.appendChild(p);
   }
-
   newInput();
 };
 
 //---------------------------------------------------------------------
 
-//-----------------------------TerminalOnClick function----------------------------------------
-let clickFun = () => {
-  let input = document.querySelector("input:last-of-type");
-  input.focus();
+//-----------------------------RecupValue function----------------------------------------
+
+// let input = document.querySelector("input");
+
+let valueProcessing = (idInput) => {
+  let input = document.getElementById(`${idInput}`);
+  let inputValue = input.value.toLowerCase();
+  // console.log(inputValue);
+  // let p = document.createElement("p");
+  // p.classList.add("res_console");
+  input.setAttribute("disabled", "true");
+
+  SearchResult(inputValue);
+
+  // if (SearchResult() === ) {
+  // p.innerText = `
+  // ABOUT       Affiche des informations me concernant
+  // `;
+
+  //   terminalContent.appendChild(p);
+  // } else {
+  //   p.innerText = `'${input.value}' n’est pas reconnu en tant que commande interne
+  //   ou externe, un programme exécutable ou un fichier de commandes.`;
+
+  //   terminalContent.appendChild(p);
+  // }
 };
+
+//-----------------------------TerminalOnClick function LastInputFocus----------------------------------------
+let clickFun = () => {
+  let inputs = document.getElementsByTagName("input");
+  let lastInputIndex = inputs.length - 1;
+  let lastInput = inputs.item(lastInputIndex);
+  lastInput.focus();
+};
+
 terminalContent.addEventListener("click", clickFun);
 //---------------------------------------------------------------------
 
