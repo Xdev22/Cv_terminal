@@ -1,0 +1,164 @@
+@font-face {
+  font-family: "consolas";
+  src: url("./font-consolas/CONSOLA.TTF");
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  height: min(100vh);
+  width: min(100vw);
+  background: no-repeat
+    linear-gradient(to right top, #000000, #393939, #717171, #afafaf, #f2f2f2);
+}
+
+.terminal {
+  background-color: #000000;
+  height: 450px;
+  box-shadow: 0px 0px 3px #393939;
+  overflow: hidden;
+  resize: both;
+  width: min(1000px, 100vw);
+}
+
+.terminal ::selection {
+  background-color: white;
+  color: black;
+}
+
+.terminal_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  height: 30px;
+}
+
+.terminal_title {
+  margin-left: 10px;
+  display: flex;
+  height: 30px;
+  width: 300px;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+}
+
+.terminal_title p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.terminal_title img {
+  user-select: none;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.terminal_setting {
+  display: flex;
+  align-items: center;
+  /* margin-right: 10px; */
+}
+.retrecir {
+  border-top: 1.9px solid black;
+  height: 3px;
+  width: 10px;
+}
+
+.content {
+  height: 30px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content:hover {
+  background-color: #d4d3d3;
+}
+
+.content-cross:hover {
+  background-color: red;
+}
+
+.aggrandir {
+  border: 1.9px solid black;
+  height: 7px;
+  width: 7px;
+}
+
+.close {
+  width: 15px;
+  height: 15px;
+  /* border-radius: 50% 50%; */
+  position: relative;
+  transform: scale(1.3);
+}
+
+.close::before {
+  background: black;
+  position: absolute;
+  display: block;
+  content: "";
+  width: 70%;
+  height: 6%;
+  top: 47%;
+  left: 15%;
+  transform: rotate(45deg);
+}
+
+.close::after {
+  background: black;
+  position: absolute;
+  display: block;
+  content: "";
+  width: 6%;
+  height: 70%;
+  left: 47%;
+  top: 15%;
+  transform: rotate(45deg);
+}
+
+.terminal_content {
+  color: #c7c7c7;
+  font-family: consolas;
+  /* min-height: 400px; */
+  height: calc(100% - 30px);
+  overflow-y: scroll;
+}
+
+.res_console {
+  margin: 0 0 5px 0;
+}
+.text_user {
+  margin: 10px 0 10px 0;
+}
+.terminal_enter::before {
+  content: "C:\005CUser\005C Rayan_Tounsi>";
+}
+
+.terminal_enter input {
+  font-family: consolas;
+  background-color: #000000;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #c7c7c7;
+  cursor: context-menu;
+  caret-color: white;
+
+  /* margin-left: -10px; */
+}
+
+.fullScreen {
+  width: 100vw;
+  height: 100vh;
+}
