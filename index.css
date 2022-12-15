@@ -22,7 +22,7 @@ body {
   box-shadow: 0px 0px 3px #393939;
   overflow: hidden;
   resize: both;
-  width: min(1000px, 100vw);
+  width: min(1000px, 90vw);
 }
 
 .terminal ::selection {
