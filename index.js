@@ -55,7 +55,14 @@ let newInput = () => {
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("id", `${id}`);
-  input.setAttribute("onchange", `valueProcessing(this.id)`);
+  // input.setAttribute("onchange", `valueProcessing(this.id)`);
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      // console.log(input.attributes.id.nodeValue);
+      valueProcessing(input.attributes.id.nodeValue);
+    }
+  });
+
   //   input.setAttribute("active", "true");
   //   input.focus();
 
