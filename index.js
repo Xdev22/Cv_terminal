@@ -13,22 +13,22 @@ const Commands = [
   {
     command: "about",
     response: [
-      "<pre> NAME           RAYAN</pre>",
-      "<pre> STACK          FULLSTACK</pre>",
-      "<pre> FAVORITE STACK BACKEND</pre>",
-      "<pre> FRAMEWORKS     REACT,NODE,EXPRESS,NEST</pre>",
-      "<pre> LANGAGE        JavaScript,TypeScript, Python(en cours)</pre>",
+      "<pre>NAME           RAYAN</pre>",
+      "<pre>STACK          FULLSTACK</pre>",
+      "<pre>FAVORITE STACK BACKEND</pre>",
+      "<pre>FRAMEWORKS     REACT,NODE,EXPRESS,NEST</pre>",
+      "<pre>LANGAGE        JavaScript,TypeScript, Python(en cours)</pre>",
     ],
   },
 ];
+
+//to refactor
 
 let commandsList = [];
 
 let commands = Commands.forEach((command) => {
   commandsList.push(command.command);
 });
-
-console.log(commandsList);
 
 //var
 
