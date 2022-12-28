@@ -73,6 +73,10 @@ const data = [
       },
     ],
   },
+  {
+    command: "project",
+    infos: [{ title: "EN COURS", description: "En cours de production" }],
+  },
 ];
 
 export default data;
