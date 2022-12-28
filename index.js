@@ -1,38 +1,10 @@
-//-----------------------------Test new version----------------------------------------
+import data from "./data.js";
+const Commands = data;
 
-const Commands = [
-  {
-    command: "help",
-    response: [
-      "<pre>ABOUT             Affiche des informations me concernant </pre>",
-      "<pre>EXPERIENCES       Affiche mes experiences professionnelles</pre>",
-      "<pre>HELP              Affiche les commandes spécifiques</pre>",
-      "<pre>PROJECT           Affiche la liste de mes projets</pre>",
-    ],
-  },
-  {
-    command: "about",
-    response: [
-      "<pre>NAME           RAYAN</pre>",
-      "<pre>STACK          FULLSTACK</pre>",
-      "<pre>FAVORITE STACK BACKEND</pre>",
-      "<pre>FRAMEWORKS     REACT,NODE,EXPRESS,NEST</pre>",
-      "<pre>LANGAGE        JavaScript,TypeScript, Python(en cours)</pre>",
-    ],
-  },
-];
+//VARIABLES
+let terminalContent = document.querySelector(".terminal_content");
 
-//to refactor
-
-let commandsList = [];
-
-let commands = Commands.forEach((command) => {
-  commandsList.push(command.command);
-});
-
-//var
-
-// générateur de nombre
+// ID GENERATOR FOR INPUTS
 function getRandomInt() {
   let i = 0;
   let result = Date.now() + Math.random(+i++).toString();
@@ -40,91 +12,93 @@ function getRandomInt() {
   return "input-" + result;
 }
 
-let terminalContent = document.querySelector(".terminal_content");
-// console.log(terminalContent);
-
 //-----------------------------NewInput function----------------------------------------
 
 let newInput = () => {
   let id = getRandomInt();
-
   let div = document.createElement("div");
-  //   div.innerHTML = `<input type="text" id="${id}" onchange="recupValue(this.id)"> `;
   div.classList.add("terminal_enter");
   terminalContent.appendChild(div);
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("id", `${id}`);
-  // input.setAttribute("onchange", `valueProcessing(this.id)`);
+  //EVENTLISTENER IF ENTER IS PRESSED
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      // console.log(input.attributes.id.nodeValue);
       valueProcessing(input.attributes.id.nodeValue);
     }
   });
-
-  //   input.setAttribute("active", "true");
-  //   input.focus();
-
   div.appendChild(input);
   input.focus();
-
-  //   let input = querySelectorAll("div input");
 };
 
 newInput();
 //---------------------------------------------------------------------
 
+//-----------------------------RESPONSE CONSOLE FUNCTION----------------------------------------
+
+let res_consoleFun = (title, description) => {
+  let res_console = document.createElement("div");
+  res_console.classList.add("res_console");
+  let table = document.createElement("table");
+  res_console.appendChild(table);
+  let tbody = document.createElement("tbody");
+  table.appendChild(tbody);
+  terminalContent.appendChild(res_console);
+  tbody.innerHTML += `<tr class="res_console_ligne">
+  <td class="command">${title}</td>
+  <td class="info">${description}</td>
+  </tr>`;
+};
+//---------------------------------------------------------------------
+
 //-----------------------------SearchResult function----------------------------------------
 
 let SearchResult = (userCommand) => {
-  let commandObj = Commands.find((el) => el.command === userCommand);
+  //Text if error
   let p = document.createElement("p");
   p.classList.add("res_console");
 
+  //commandObj=== result of searching value.input
+  let commandObj = Commands.find((el) => el.command === userCommand);
+
   if (commandObj !== undefined) {
-    let div = document.createElement("div");
-    div.innerHTML = commandObj.response.join("");
-    terminalContent.appendChild(div);
+    for (let obj of commandObj.infos) {
+      res_consoleFun(obj.title, obj.description);
+    }
+    newInput();
+    //WhiteSpace check
+  } else if (!userCommand.trim().length) {
+    newInput();
+    //clear terminal
+  } else if (userCommand === "clear") {
+    while (terminalContent.firstChild) {
+      terminalContent.removeChild(terminalContent.firstChild);
+    }
+    newInput();
   } else {
     p.innerText = `'${userCommand}' n’est pas reconnu en tant que commande interne
-    ou externe, un programme exécutable ou un fichier de commandes.`;
+   ou externe, un programme exécutable ou un fichier de commandes.`;
     terminalContent.appendChild(p);
+    newInput();
   }
-  newInput();
 };
 
 //---------------------------------------------------------------------
 
 //-----------------------------RecupValue function----------------------------------------
 
-// let input = document.querySelector("input");
-
 let valueProcessing = (idInput) => {
   let input = document.getElementById(`${idInput}`);
   let inputValue = input.value.toLowerCase();
-  // console.log(inputValue);
-  // let p = document.createElement("p");
-  // p.classList.add("res_console");
+
   input.setAttribute("disabled", "true");
 
   SearchResult(inputValue);
-
-  // if (SearchResult() === ) {
-  // p.innerText = `
-  // ABOUT       Affiche des informations me concernant
-  // `;
-
-  //   terminalContent.appendChild(p);
-  // } else {
-  //   p.innerText = `'${input.value}' n’est pas reconnu en tant que commande interne
-  //   ou externe, un programme exécutable ou un fichier de commandes.`;
-
-  //   terminalContent.appendChild(p);
-  // }
 };
+//---------------------------------------------------------------------
 
-//-----------------------------TerminalOnClick function LastInputFocus----------------------------------------
+//-----------------------------TerminalOnClick function : LastInputFocus----------------------------------------
 let clickFun = () => {
   let inputs = document.getElementsByTagName("input");
   let lastInputIndex = inputs.length - 1;
