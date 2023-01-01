@@ -144,6 +144,7 @@ body {
 
 .command {
   width: 15vw;
+  display: flex;
 }
 
 table {
