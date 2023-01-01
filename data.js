@@ -8,74 +8,160 @@ const data = [
         description: "Affiche mes experiences professionnelles",
       },
       {
-        title: "HELP",
-        description: "Affiche les commandes spécifiques",
-      },
-      {
         title: "PROJECT",
         description: "Affiche la liste de mes projets",
       },
       {
-        title: "CLR",
+        title: "CLS",
         description: "Remet à zéro le terminale",
+      },
+      {
+        title: "HELP",
+        description: "Affiche les commandes spécifiques",
+      },
+      { title: "JOBS", description: "Les entreprises et mes postes" },
+      {
+        title: "FORMATIONS",
+        description: "Les formations que j'ai suivis",
+      },
+      {
+        title: "DEVELOPER",
+        description: "Affiche les details de la formation de developpeur",
+      },
+      {
+        title: "COMPUTER_SUPPORT",
+        description:
+          "Suivis de la formation techicien d'assistance informatique chez le Greta",
       },
     ],
   },
   {
     command: "about",
     infos: [
-      { title: "NAME", description: "RAYAN" },
+      { title: "NAME", description: "Rayan" },
       {
         title: "STACK",
-        description: "FULLSTACK",
+        description: "FullStack",
       },
       {
         title: "FAVORITE STACK",
-        description: "BACKEND",
+        description: "Backend",
       },
       {
-        title: "FRAMEWORKS",
-        description: "REACT,NODE,EXPRESS,NEST",
+        title: "FRAMEWORKS BACKEND",
+        description: "Express,Nest",
       },
       {
-        title: "LANGAGE",
-        description: "JavaScript,TypeScript, Python(en cours)",
+        title: "FRAMEWORKS FRONTEND",
+        description: "React(html/css/scss/js/jsx)",
+      },
+      {
+        title: "LANGAGES",
+        description: "JavaScript,TypeScript",
+      },
+      {
+        title: "GITHUB",
+        description: "Xdev22",
+      },
+      {
+        title: "EMAIL",
+        description: "rayantounsi18@icloud.com",
       },
     ],
   },
   {
     command: "experiences",
     infos: [
-      { title: "POSTES", description: "MES POSTES" },
+      { title: "JOBS", description: "Les entreprises et mes postes" },
       {
         title: "FORMATIONS",
-        description: "MES FORMATIONS",
+        description: "Les formations que j'ai suivis",
       },
     ],
   },
   {
     command: "formations",
     infos: [
-      { title: "OPENCLASSROOMS", description: "DEV" },
       {
-        title: "ASSISTANCE INFORMATIQUE",
+        title: "DEVELOPER",
+        description: "Afficher les details de la formation de developpeur",
+      },
+      {
+        title: "COMPUTER_SUPPORT",
+        description:
+          "Suivis de la formation techicien d'assistance informatique chez le Greta",
+      },
+    ],
+  },
+  {
+    command: "computer_support",
+    infos: [
+      {
+        title: "WHERE?",
         description: "GRETA",
       },
-    ],
-  },
-  {
-    command: "postes",
-    infos: [
-      { title: "otacos", description: "cuisine" },
       {
-        title: "livreur",
-        description: "amazon",
+        title: "WHEN?",
+        description: "2019",
+      },
+      {
+        title: "DIPLOMA",
+        description: "Obtenu",
       },
     ],
   },
   {
-    command: "project",
-    infos: [{ title: "EN COURS", description: "En cours de production" }],
+    command: "developer",
+    infos: [
+      {
+        title: "WHERE?",
+        description: "OpenClassRooms",
+      },
+      {
+        title: "WHEN?",
+        description: "2022",
+      },
+      {
+        title: "DIPLOMA",
+        description: "Obtenu",
+      },
+      {
+        title: "PROJECTS",
+        description: "7",
+      },
+      {
+        title: "LANGAGE",
+        description: "JavaScipt",
+      },
+      {
+        title: "FRAMEWORKS BACKEND",
+        description: "Express",
+      },
+      {
+        title: "FRAMEWORKS FRONTEND",
+        description: "REACT",
+      },
+    ],
+  },
+
+  {
+    command: "jobs",
+    infos: [
+      {
+        title: "AMAZON",
+        description: "Chef d'équipe- nov.2022- x (CDI)",
+      },
+      {
+        title: "TECKLY",
+        description: "Technicien informatique- Mai 2019-Juill. 2019 ",
+      },
+      { title: "DOTT", description: "Chauffeur- Juill. 2019-Fevr. 2020" },
+      { title: "OTACOS", description: "Cuisinier- Dec. 2016-Aout 2017" },
+    ],
+  },
+  {
+    command: "projects",
+    infos: [{ title: "-", description: "En cours de production" }],
   },
 ];
 
