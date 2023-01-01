@@ -16,7 +16,7 @@ const data = [
         description: "Affiche la liste de mes projets",
       },
       {
-        title: "CLEAR",
+        title: "CLR",
         description: "Remet à zéro le terminale",
       },
     ],

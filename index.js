@@ -37,18 +37,24 @@ newInput();
 
 //-----------------------------RESPONSE CONSOLE FUNCTION----------------------------------------
 
-let res_consoleFun = (title, description) => {
+let res_consoleFun = (title, description, tbody) => {
+  tbody.innerHTML += `<tr class="res_console_ligne">
+  <td class="command">${title}</td>
+  <td class="info">${description}</td>
+  </tr>`;
+};
+
+let res_consoleComponent = () => {
   let res_console = document.createElement("div");
+  let br = document.createElement("br");
   res_console.classList.add("res_console");
   let table = document.createElement("table");
   res_console.appendChild(table);
   let tbody = document.createElement("tbody");
   table.appendChild(tbody);
   terminalContent.appendChild(res_console);
-  tbody.innerHTML += `<tr class="res_console_ligne">
-  <td class="command">${title}</td>
-  <td class="info">${description}</td>
-  </tr>`;
+  terminalContent.appendChild(br);
+  return tbody;
 };
 //---------------------------------------------------------------------
 
@@ -63,15 +69,17 @@ let SearchResult = (userCommand) => {
   let commandObj = Commands.find((el) => el.command === userCommand);
 
   if (commandObj !== undefined) {
+    let tbody = res_consoleComponent();
+
     for (let obj of commandObj.infos) {
-      res_consoleFun(obj.title, obj.description);
+      res_consoleFun(obj.title, obj.description, tbody);
     }
     newInput();
     //WhiteSpace check
   } else if (!userCommand.trim().length) {
     newInput();
     //clear terminal
-  } else if (userCommand === "clear") {
+  } else if (userCommand === "cls") {
     while (terminalContent.firstChild) {
       terminalContent.removeChild(terminalContent.firstChild);
     }
@@ -80,6 +88,7 @@ let SearchResult = (userCommand) => {
     p.innerText = `'${userCommand}' n’est pas reconnu en tant que commande interne
    ou externe, un programme exécutable ou un fichier de commandes.`;
     terminalContent.appendChild(p);
+    terminalContent.appendChild(document.createElement("br"));
     newInput();
   }
 };
