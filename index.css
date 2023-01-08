@@ -12,7 +12,8 @@ body {
   margin: 0;
   height: min(100vh);
   width: min(100vw);
-  background: #9cec8ad1;
+  /* background: #9cec8ad1; */
+  background: no-repeat center url("./fd1.jpg");
 }
 
 .terminal {
@@ -85,6 +86,13 @@ body {
 
 .content-cross:hover {
   background-color: red;
+}
+
+.content-cross:hover .close::before {
+  background-color: white;
+}
+.content-cross:hover .close::after {
+  background-color: white;
 }
 
 .aggrandir {

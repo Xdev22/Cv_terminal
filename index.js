@@ -3,6 +3,7 @@ const Commands = data;
 
 //VARIABLES
 let terminalContent = document.querySelector(".terminal_content");
+let terminal = document.querySelector(".terminal");
 
 // ID GENERATOR FOR INPUTS
 function getRandomInt() {
